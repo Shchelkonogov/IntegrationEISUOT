@@ -1,0 +1,93 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+POST https://172.16.4.26:7004/Integration/EISUOT
+#POST http://localhost:7001/Integration/EISUOT
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+[
+  {
+    "ctp":"1",
+    "filial":"2",
+    "predpr":"3",
+    "address":"4",
+    "building_type":"5",
+    "building_max_floor":"6",
+    "muid":123,
+    "schema_gvs":"8",
+    "affiliation":"9",
+    "availability":"10",
+    "number_gvs_zone":"11",
+    "affiliation_zone":"12",
+    "direction":"13",
+    "classification_gvs":"14",
+    "estimated_circulation":"15",
+    "building_t1_opt":"16",
+    "building_t2_opt":"17",
+    "building_dt_opt":"18",
+    "building_estimated_circulation_opt":"19",
+    "building_t1_dop":"20",
+    "building_dt_dop":"21",
+    "building_estimated_circulation_dop":"22",
+    "ctp_t7_opt":"23",
+    "ctp_t13_opt":"24",
+    "ctp_dt_opt":"25",
+    "ctp_circulation_gvs_opt":"26",
+    "ctp_t7_dop":"27",
+    "ctp_circulation_gvs_dop":"28",
+    "ctp_t7_2_opt":"29",
+    "ctp_t13_2_opt":"30",
+    "ctp_dt_2_opt":"31",
+    "ctp_circulation_gvs_2_opt":"32",
+    "ctp_t7_2_dop":"33",
+    "ctp_circulation_gvs_2_dop":"34",
+    "zone_problem":"35",
+    "t_problem":"36"
+  },
+  {
+    "ctp":"1",
+    "filial":"2",
+    "predpr":"3",
+    "address":"4",
+    "building_type":"5",
+    "building_max_floor":"6",
+    "muid":"7",
+    "schema_gvs":"8",
+    "affiliation":"9",
+    "availability":"10",
+    "number_gvs_zone":"11",
+    "affiliation_zone":"12",
+    "direction":"13",
+    "classification_gvs":"14",
+    "estimated_circulation":"15",
+    "building_t1_opt":"16",
+    "building_t2_opt":"17",
+    "building_dt_opt":"18",
+    "building_estimated_circulation_opt":"19",
+    "building_t1_dop":"20",
+    "building_dt_dop":"21",
+    "building_estimated_circulation_dop":"22",
+    "ctp_t7_opt":"23",
+    "ctp_t13_opt":"24",
+    "ctp_dt_opt":"25",
+    "ctp_circulation_gvs_opt":"26",
+    "ctp_t7_dop":"27",
+    "ctp_circulation_gvs_dop":"28",
+    "ctp_t7_2_opt":"29",
+    "ctp_t13_2_opt":"30",
+    "ctp_dt_2_opt":"31",
+    "ctp_circulation_gvs_2_opt":"32",
+    "ctp_t7_2_dop":"33",
+    "ctp_circulation_gvs_2_dop":"34",
+    "zone_problem":"35",
+    "t_problem":"36"
+  }
+]
+
+###
