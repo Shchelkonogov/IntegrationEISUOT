@@ -5,7 +5,7 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST https://172.16.4.26:7004/Integration/EISUOT
+POST https://172.16.4.18:7004/Integration/EISUOT
 #POST http://localhost:7001/Integration/EISUOT
 Accept: */*
 Cache-Control: no-cache
@@ -19,7 +19,7 @@ Content-Type: application/json
     "address":"4",
     "building_type":"5",
     "building_max_floor":"6",
-    "muid":123,
+    "muid":1231234567890123456,
     "schema_gvs":"8",
     "affiliation":"9",
     "availability":"10",

@@ -1,6 +1,5 @@
 package ru.tecon.integrationEISUOT.ejb;
 
-import oracle.jdbc.OracleConnection;
 import ru.tecon.integrationEISUOT.model.EisuotData;
 import ru.tecon.integrationEISUOT.util.IntegrateException;
 
@@ -38,7 +37,7 @@ public class IntegrationBean {
      */
     public List<Long> setEisuotData(List<EisuotData> data) throws IntegrateException {
         List<Long> result = new ArrayList<>();
-        try (OracleConnection connect = (OracleConnection) ds.getConnection();
+        try (Connection connect = ds.getConnection();
              PreparedStatement stm = connect.prepareStatement(INSERT_EISUOT_DATA_TEST);
              CallableStatement cStm = connect.prepareCall(FUNCTION_INPUT_EISUOT_DATA)) {
             for (EisuotData entry: data) {
@@ -58,14 +57,14 @@ public class IntegrationBean {
                         entry.getZoneProblem(), entry.gettProblem()};
                 Struct entry_rec = connect.createStruct("T_EISUOT_DATA_REC", row);
 
-                cStm.registerOutParameter(1, Types.INTEGER);
+                cStm.registerOutParameter(1, Types.BIGINT);
                 cStm.setObject(2, entry_rec);
 
                 cStm.executeUpdate();
 
-                if (cStm.getInt(1) != 0) {
+                if (cStm.getLong(1) != 0) {
                     logger.log(Level.WARNING, "error insert EISUOT data: {0}", entry);
-                    result.add((long) cStm.getInt(1));
+                    result.add(cStm.getLong(1));
                 }
             }
         } catch (SQLException e) {

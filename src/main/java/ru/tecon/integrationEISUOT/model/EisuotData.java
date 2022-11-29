@@ -201,7 +201,7 @@ public class EisuotData {
                 .add("address='" + address + "'")
                 .add("buildingType='" + buildingType + "'")
                 .add("buildingMaxFloor='" + buildingMaxFloor + "'")
-                .add("muid='" + muid + "'")
+                .add("muid=" + muid)
                 .add("schemaGvs='" + schemaGvs + "'")
                 .add("affiliation='" + affiliation + "'")
                 .add("availability='" + availability + "'")
