@@ -54,7 +54,7 @@ public class IntegrationBean {
                         entry.getCtpDtOpt(), entry.getCtpCirculationGvsOpt(), entry.getCtpT7Dop(),
                         entry.getCtpCirculationGvsDop(), entry.getCtpT7$2Opt(), entry.getCtpT13$2Opt(), entry.getCtpDt2Opt(),
                         entry.getCtpCirculationGvs2Opt(), entry.getCtpT7$2Dop(), entry.getCtpCirculationGvs2Dop(),
-                        entry.getZoneProblem(), entry.gettProblem()};
+                        entry.getZoneProblem(), entry.gettProblem(), entry.getMaster()};
                 Struct entry_rec = connect.createStruct("T_EISUOT_DATA_REC", row);
 
                 cStm.registerOutParameter(1, Types.BIGINT);

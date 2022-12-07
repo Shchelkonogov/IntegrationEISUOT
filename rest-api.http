@@ -48,7 +48,8 @@ Content-Type: application/json
     "ctp_t7_2_dop":"33",
     "ctp_circulation_gvs_2_dop":"34",
     "zone_problem":"35",
-    "t_problem":"36"
+    "t_problem":"36",
+    "master":"Hello"
   },
   {
     "ctp":"1",
@@ -86,7 +87,8 @@ Content-Type: application/json
     "ctp_t7_2_dop":"33",
     "ctp_circulation_gvs_2_dop":"34",
     "zone_problem":"35",
-    "t_problem":"36"
+    "t_problem":"36",
+    "master":"Hello"
   }
 ]
 

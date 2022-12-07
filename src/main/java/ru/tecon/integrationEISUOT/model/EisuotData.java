@@ -47,6 +47,7 @@ public class EisuotData {
     private String ctpCirculationGvs2Dop;
     private String zoneProblem;
     private String tProblem;
+    private String master;
 
     public String getCtp() {
         return ctp;
@@ -192,6 +193,10 @@ public class EisuotData {
         return tProblem;
     }
 
+    public String getMaster() {
+        return master;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", EisuotData.class.getSimpleName() + "[", "]")
@@ -223,14 +228,15 @@ public class EisuotData {
                 .add("ctpCirculationGvsOpt='" + ctpCirculationGvsOpt + "'")
                 .add("ctpT7Dop='" + ctpT7Dop + "'")
                 .add("ctpCirculationGvsDop='" + ctpCirculationGvsDop + "'")
-                .add("ctpT72Opt='" + ctpT7$2Opt + "'")
-                .add("ctpT132Opt='" + ctpT13$2Opt + "'")
+                .add("ctpT7$2Opt='" + ctpT7$2Opt + "'")
+                .add("ctpT13$2Opt='" + ctpT13$2Opt + "'")
                 .add("ctpDt2Opt='" + ctpDt2Opt + "'")
                 .add("ctpCirculationGvs2Opt='" + ctpCirculationGvs2Opt + "'")
-                .add("ctpT72Dop='" + ctpT7$2Dop + "'")
+                .add("ctpT7$2Dop='" + ctpT7$2Dop + "'")
                 .add("ctpCirculationGvs2Dop='" + ctpCirculationGvs2Dop + "'")
                 .add("zoneProblem='" + zoneProblem + "'")
                 .add("tProblem='" + tProblem + "'")
+                .add("master='" + master + "'")
                 .toString();
     }
 }
