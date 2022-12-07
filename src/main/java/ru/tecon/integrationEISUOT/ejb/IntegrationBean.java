@@ -40,10 +40,10 @@ public class IntegrationBean {
         try (Connection connect = ds.getConnection();
              PreparedStatement stm = connect.prepareStatement(INSERT_EISUOT_DATA_TEST);
              CallableStatement cStm = connect.prepareCall(FUNCTION_INPUT_EISUOT_DATA)) {
-            for (EisuotData entry: data) {
-                stm.setBytes(1, entry.toString().getBytes());
-                stm.executeUpdate();
+            stm.setBytes(1, data.toString().getBytes());
+            stm.executeUpdate();
 
+            for (EisuotData entry: data) {
                 Object[] row = {entry.getCtp(), entry.getFilial(), entry.getPredpr(), entry.getAddress(),
                         entry.getBuildingType(), entry.getBuildingMaxFloor(), entry.getMuid(), entry.getSchemaGvs(),
                         entry.getAffiliation(), entry.getAvailability(), entry.getNumberGvsZone(), entry.getAffiliationZone(),
