@@ -1,16 +1,16 @@
 package ru.tecon.integrationEISUOT.service;
 
 import com.google.gson.Gson;
+import jakarta.ejb.EJB;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import ru.tecon.integrationEISUOT.ejb.IntegrationBean;
 import ru.tecon.integrationEISUOT.model.EisuotData;
 import ru.tecon.integrationEISUOT.util.IntegrateException;
 
-import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 @Path("/")
 public class MyRestService {
 
-    private static Logger logger = Logger.getLogger(MyRestService.class.getName());
+    private static final Logger logger = Logger.getLogger(MyRestService.class.getName());
 
     @EJB
     private IntegrationBean integrationBean;

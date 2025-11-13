@@ -1,15 +1,17 @@
 package ru.tecon.integrationEISUOT.ejb;
 
+import jakarta.annotation.Resource;
+import jakarta.ejb.LocalBean;
+import jakarta.ejb.Stateless;
+import org.postgresql.util.PGobject;
 import ru.tecon.integrationEISUOT.model.EisuotData;
 import ru.tecon.integrationEISUOT.util.IntegrateException;
 
-import javax.annotation.Resource;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,10 +23,10 @@ import java.util.logging.Logger;
 @LocalBean
 public class IntegrationBean {
 
-    private static Logger logger = Logger.getLogger(IntegrationBean.class.getName());
+    private static final Logger logger = Logger.getLogger(IntegrationBean.class.getName());
 
     private static final String FUNCTION_INPUT_EISUOT_DATA = "{? = call EISUOT.INPUT(?)}";
-    private static final String INSERT_EISUOT_DATA_TEST = "insert into EISUOT_TEST (RESULT) values (?)";
+    private static final String INSERT_EISUOT_DATA_TEST = "insert into admin.EISUOT_TEST (RESULT) values (?)";
 
     @Resource(name = "jdbc/DataSource")
     private DataSource ds;
@@ -44,21 +46,51 @@ public class IntegrationBean {
             stm.executeUpdate();
 
             for (EisuotData entry: data) {
-                Object[] row = {entry.getCtp(), entry.getFilial(), entry.getPredpr(), entry.getAddress(),
-                        entry.getBuildingType(), entry.getBuildingMaxFloor(), entry.getMuid(), entry.getSchemaGvs(),
-                        entry.getAffiliation(), entry.getAvailability(), entry.getNumberGvsZone(), entry.getAffiliationZone(),
-                        entry.getDirection(), entry.getClassificationGvs(), entry.getEstimatedCirculation(),
-                        entry.getBuildingT1Opt(), entry.getBuildingT2Opt(), entry.getBuildingDtOpt(),
-                        entry.getBuildingEstimatedCirculationOpt(), entry.getBuildingT1Dop(), entry.getBuildingDtDop(),
-                        entry.getBuildingEstimatedCirculationDop(), entry.getCtpT7Opt(), entry.getCtpT13Opt(),
-                        entry.getCtpDtOpt(), entry.getCtpCirculationGvsOpt(), entry.getCtpT7Dop(),
-                        entry.getCtpCirculationGvsDop(), entry.getCtpT7$2Opt(), entry.getCtpT13$2Opt(), entry.getCtpDt2Opt(),
-                        entry.getCtpCirculationGvs2Opt(), entry.getCtpT7$2Dop(), entry.getCtpCirculationGvs2Dop(),
-                        entry.getZoneProblem(), entry.gettProblem(), entry.getMaster()};
-                Struct entry_rec = connect.createStruct("T_EISUOT_DATA_REC", row);
+                StringJoiner sj = new StringJoiner(", ", "(", ")")
+                        .add(entry.getCtp())
+                        .add(entry.getFilial())
+                        .add(entry.getPredpr())
+                        .add(entry.getAddress())
+                        .add(entry.getBuildingType())
+                        .add(entry.getBuildingMaxFloor())
+                        .add(entry.getMuid().toString())
+                        .add(entry.getSchemaGvs())
+                        .add(entry.getAffiliation())
+                        .add(entry.getAvailability())
+                        .add(entry.getNumberGvsZone())
+                        .add(entry.getAffiliationZone())
+                        .add(entry.getDirection())
+                        .add(entry.getClassificationGvs())
+                        .add(entry.getEstimatedCirculation())
+                        .add(entry.getBuildingT1Opt())
+                        .add(entry.getBuildingT2Opt())
+                        .add(entry.getBuildingDtOpt())
+                        .add(entry.getBuildingEstimatedCirculationOpt())
+                        .add(entry.getBuildingT1Dop())
+                        .add(entry.getBuildingDtDop())
+                        .add(entry.getBuildingEstimatedCirculationDop())
+                        .add(entry.getCtpT7Opt())
+                        .add(entry.getCtpT13Opt())
+                        .add(entry.getCtpDtOpt())
+                        .add(entry.getCtpCirculationGvsOpt())
+                        .add(entry.getCtpT7Dop())
+                        .add(entry.getCtpCirculationGvsDop())
+                        .add(entry.getCtpT7$2Opt())
+                        .add(entry.getCtpT13$2Opt())
+                        .add(entry.getCtpDt2Opt())
+                        .add(entry.getCtpCirculationGvs2Opt())
+                        .add(entry.getCtpT7$2Dop())
+                        .add(entry.getCtpCirculationGvs2Dop())
+                        .add(entry.getZoneProblem())
+                        .add(entry.gettProblem())
+                        .add(entry.getMaster());
+
+                PGobject pGobject = new PGobject();
+                pGobject.setType("eisuot.t_eisuot_data");
+                pGobject.setValue(sj.toString());
 
                 cStm.registerOutParameter(1, Types.BIGINT);
-                cStm.setObject(2, entry_rec);
+                cStm.setObject(2, pGobject);
 
                 cStm.executeUpdate();
 
