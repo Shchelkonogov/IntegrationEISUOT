@@ -37,7 +37,7 @@ public class MyRestService {
      *     если данные внесены частично, то вернет 206 и список muid, которые не внесены в базу
      */
     @POST
-    @Path("/EISUOT")
+    @Path("/TOIR")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response setEisuotData(List<EisuotData> eisuotData) {
         logger.log(Level.INFO, "integrate data: {0}", eisuotData);
