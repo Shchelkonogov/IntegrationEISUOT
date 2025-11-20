@@ -46,7 +46,7 @@ public class IntegrationBean {
             stm.executeUpdate();
 
             for (EisuotData entry: data) {
-                StringJoiner sj = new StringJoiner(", ", "(", ")")
+                StringJoiner sj = new StringJoiner("\", \"", "(\"", "\")")
                         .add(entry.getCtp())
                         .add(entry.getFilial())
                         .add(entry.getPredpr())
